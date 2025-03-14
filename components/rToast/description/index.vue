@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type ToastDescriptionProps } from "reka-ui";
+import type { ToastDescriptionProps } from "reka-ui";
 import { computed, type HTMLAttributes } from "vue";
 
 const props = defineProps<
@@ -14,7 +14,21 @@ const delegatedProps = computed(() => {
 </script>
 
 <template>
-  <ToastDescription :class="props.class" v-bind="delegatedProps">
+  <ToastDescription
+    :class="props.class"
+    v-bind="delegatedProps"
+    class="c-toast__description"
+  >
     <slot />
   </ToastDescription>
 </template>
+
+<style lang="scss" scoped>
+.c-toast__description {
+  grid-area: description;
+  margin: 0;
+  color: black;
+  font-size: 13px;
+  line-height: 1.3;
+}
+</style>

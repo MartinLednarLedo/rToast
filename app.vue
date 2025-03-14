@@ -7,7 +7,9 @@ const { toast } = useToast();
 
   <button
     :style="{ position: 'fixed', right: '2rem', top: '2rem' }"
-    @click="toast({ title: 'Toast' })"
+    @click="
+      toast({ title: 'Toast', description: 'Some important description' })
+    "
   >
     Create toast
   </button>

@@ -11,8 +11,6 @@ const props = defineProps<
   }
 >();
 
-console.log("PROPS", props);
-
 const emits = defineEmits<ToastRootEmits>();
 
 const forwarded = useForwardPropsEmits(props, emits);
@@ -20,11 +18,11 @@ const forwarded = useForwardPropsEmits(props, emits);
 
 <template>
   <ToastRoot
-    v-slot="{ remaining }"
     v-bind="forwarded"
+    :duration="2000"
+    class="c-toast"
     @update:open="onOpenChange"
   >
-    {{ remaining }}
     <slot />
   </ToastRoot>
 </template>

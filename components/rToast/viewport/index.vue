@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type ToastViewportProps } from "reka-ui";
+import type { ToastViewportProps } from "reka-ui";
 import { computed, type HTMLAttributes } from "vue";
 
 const props = defineProps<
@@ -14,5 +14,30 @@ const delegatedProps = computed(() => {
 </script>
 
 <template>
-  <ToastViewport v-bind="delegatedProps" :class="props.class" />
+  <ToastViewport
+    v-bind="delegatedProps"
+    :class="props.class"
+    class="c-toast-viewport"
+  />
 </template>
+
+<style lang="scss" scoped>
+@use "@/assets/css/rToast/root.scss";
+
+:deep(.c-toast-viewport) {
+  --viewport-padding: 2.5rem;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: var(--viewport-padding);
+  gap: 10px;
+  width: 390px;
+  max-width: 100vw;
+  margin: 0;
+  list-style: none;
+  z-index: 2147483647;
+  outline: none;
+}
+</style>

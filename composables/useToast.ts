@@ -8,6 +8,7 @@ type ToasterToast = {
   title?: string;
   description?: StringOrVNode;
   action?: Component;
+  open?: boolean;
   onOpenChange?: (value: boolean) => void;
 };
 
@@ -34,13 +35,22 @@ const dismissToast = (toastId?: ToasterToast["id"]) => {
   if (toastId === undefined) {
     state.value.toasts = [];
   } else {
-    state.value.toasts = state.value.toasts.filter(
-      (toast) => toast.id !== toastId
-    );
+    // Hide toast
+    const toast = state.value.toasts.find((t) => t.id === toastId);
+    if (!toast) return;
 
-    if (state.value.toasts.length === 0) {
-      count = 0;
-    }
+    toast.open = false;
+
+    // In order for exit animation to run
+    setTimeout(() => {
+      state.value.toasts = state.value.toasts.filter(
+        (toast) => toast.id !== toastId
+      );
+
+      if (state.value.toasts.length === 0) {
+        count = 0;
+      }
+    }, 1000);
   }
 };
 
@@ -54,6 +64,7 @@ function toast(props: Toast) {
   addToast({
     ...props,
     id: newToastId,
+    open: true,
     onOpenChange: (open: boolean) => {
       if (!open) dismiss();
     },

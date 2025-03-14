@@ -19,6 +19,7 @@
     "vue": "latest"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
     "reka-ui": "^2.0.2"
   }
 }

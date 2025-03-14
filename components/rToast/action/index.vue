@@ -14,7 +14,13 @@ const delegatedProps = computed(() => {
 </script>
 
 <template>
-  <ToastAction v-bind="delegatedProps">
+  <ToastAction v-bind="delegatedProps" class="c-toast__action">
     <slot />
   </ToastAction>
 </template>
+
+<style lang="scss" scoped>
+.c-toast__action {
+  grid-area: action;
+}
+</style>
