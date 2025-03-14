@@ -41,16 +41,18 @@ const dismissToast = (toastId?: ToasterToast["id"]) => {
 
     toast.open = false;
 
-    // In order for exit animation to run
-    setTimeout(() => {
-      state.value.toasts = state.value.toasts.filter(
-        (toast) => toast.id !== toastId
-      );
+    // Remove toast after exit animation runs
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        state.value.toasts = state.value.toasts.filter(
+          (toast) => toast.id !== toastId
+        );
 
-      if (state.value.toasts.length === 0) {
-        count = 0;
-      }
-    }, 1000);
+        if (state.value.toasts.length === 0) {
+          count = 0;
+        }
+      }, 150);
+    });
   }
 };
 
