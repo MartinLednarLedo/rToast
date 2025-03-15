@@ -1,15 +1,22 @@
-import type { Component, VNode } from "vue";
+import type { Component, HTMLAttributes, VNode } from "vue";
 import { computed, ref } from "vue";
+import type { RToastStyleProps } from "../components/rToast/rToast.styles";
+import type { ToastRootProps } from "reka-ui";
 
 export type StringOrVNode = string | VNode | (() => VNode);
 
-type ToasterToast = {
+export interface RToastProps extends ToastRootProps {
+  onOpenChange?: (value: boolean) => void;
+  class?: HTMLAttributes["class"];
+  variant?: RToastStyleProps["intent"];
+}
+
+type ToasterToast = RToastProps & {
   id: string;
   title?: string;
   description?: StringOrVNode;
   action?: Component;
   open?: boolean;
-  onOpenChange?: (value: boolean) => void;
 };
 
 let count = 0;

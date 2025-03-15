@@ -19,6 +19,7 @@
     "vue": "latest"
   },
   "dependencies": {
+    "@phosphor-icons/vue": "^2.2.1",
     "class-variance-authority": "^0.7.1",
     "reka-ui": "^2.0.2"
   }

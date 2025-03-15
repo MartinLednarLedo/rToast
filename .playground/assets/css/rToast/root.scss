@@ -10,6 +10,8 @@
     grid-template-columns: auto max-content;
     column-gap: 15px;
     align-items: center;
+    overflow: hidden;
+    position: relative;
   }
 
   &[data-state="open"] {
@@ -27,6 +29,24 @@
   }
   &[data-swipe="end"] {
     animation: swipeOut 100ms ease-out;
+  }
+}
+
+:deep(.c-toast--error) {
+  & {
+    background-color: red;
+  }
+}
+
+:deep(.c-toast__progress-bar) {
+  & {
+    height: 0.3rem;
+    background-color: red;
+    will-change: width;
+    transition: width 0.3s ease-out;
+    position: absolute;
+
+    inset: unset 0 0 0;
   }
 }
 

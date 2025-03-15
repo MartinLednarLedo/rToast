@@ -26,9 +26,9 @@ const delegatedProps = computed(() => {
 <style lang="scss" scoped>
 .c-toast__title {
   grid-area: title;
-  margin-bottom: 5px;
-  font-weight: 500;
-  color: black;
-  font-size: 15px;
+  font-weight: 600;
+  color: inherit;
+  font-size: 1.5rem;
+  padding-bottom: 0.4rem;
 }
 </style>
