@@ -1,0 +1,34 @@
+@mixin hover($withFocus: false) {
+  @if $withFocus {
+    @media (hover: hover) {
+      &:hover {
+        @content;
+      }
+    }
+
+    &:focus,
+    &:focus-visible {
+      @content;
+    }
+  } @else {
+    @media (hover: hover) {
+      &:hover {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin dark {
+  @at-root {
+    [data-theme="dark"] & {
+      @content;
+    }
+
+    [data-theme="system"] & {
+      @media (prefers-color-scheme: dark) {
+        @content;
+      }
+    }
+  }
+}

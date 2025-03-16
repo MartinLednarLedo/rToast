@@ -4,7 +4,8 @@ import { type ToastRootEmits, useForwardPropsEmits } from "reka-ui";
 import { rToastStyles } from "./rToast.styles";
 
 const props = withDefaults(defineProps<RToastProps>(), {
-  duration: 20000,
+  duration: 5000,
+  withProgressBar: false,
   onOpenChange: undefined,
   class: "",
 });
@@ -30,6 +31,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
     <slot />
 
     <div
+      v-if="withProgressBar"
       class="c-toast__progress-bar"
       :style="{ width: `${(remaining / props.duration) * 100 - 3}%` }"
     />

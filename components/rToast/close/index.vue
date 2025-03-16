@@ -17,22 +17,5 @@ const props = defineProps<
 </template>
 
 <style lang="scss" scoped>
-button {
-  all: unset;
-}
-
-.c-toast__close {
-  & {
-    cursor: pointer;
-    color: inherit;
-    opacity: 0.7;
-    font-size: 1.5rem;
-  }
-
-  &:hover {
-    & {
-      opacity: 1;
-    }
-  }
-}
+@use "@/assets/css/rToast/close.scss";
 </style>

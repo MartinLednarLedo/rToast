@@ -20,7 +20,5 @@ const delegatedProps = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-.c-toast__action {
-  grid-area: action;
-}
+@use "@/assets/css/rToast/action.scss";
 </style>

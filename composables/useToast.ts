@@ -7,6 +7,7 @@ export type StringOrVNode = string | VNode | (() => VNode);
 
 export interface RToastProps extends ToastRootProps {
   onOpenChange?: (value: boolean) => void;
+  withProgressBar?: boolean;
   class?: HTMLAttributes["class"];
   variant?: RToastStyleProps["intent"];
 }
