@@ -5,26 +5,28 @@ const { toasts } = useToast();
 </script>
 
 <template>
-  <RToastProvider>
-    <RToast v-for="toast in toasts" :key="toast.id" v-bind="toast">
-      <RToastTitle v-if="toast.title">
-        {{ toast.title }}
-      </RToastTitle>
+  <ClientOnly>
+    <RToastProvider>
+      <RToast v-for="toast in toasts" :key="toast.id" v-bind="toast">
+        <RToastTitle v-if="toast.title">
+          {{ toast.title }}
+        </RToastTitle>
 
-      <template v-if="toast.description">
-        <RToastDescription v-if="isVNode(toast.description)">
-          <component :is="toast.description" />
-        </RToastDescription>
-        <RToastDescription v-else>
-          {{ toast.description }}
-        </RToastDescription>
-      </template>
+        <template v-if="toast.description">
+          <RToastDescription v-if="isVNode(toast.description)">
+            <component :is="toast.description" />
+          </RToastDescription>
+          <RToastDescription v-else>
+            {{ toast.description }}
+          </RToastDescription>
+        </template>
 
-      <RToastClose />
+        <RToastClose />
 
-      <component :is="toast.action" />
-    </RToast>
+        <component :is="toast.action" />
+      </RToast>
 
-    <RToastViewport />
-  </RToastProvider>
+      <RToastViewport />
+    </RToastProvider>
+  </ClientOnly>
 </template>
